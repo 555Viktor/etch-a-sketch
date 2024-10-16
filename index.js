@@ -1,14 +1,25 @@
-// DOM elements, values and style of sketch container
+// Sketch container - DOM, values and style
 let sketchContainer = document.querySelector('.sketch-container');
+
+let inputGridSize = document.querySelector('.input-sketch-size')
+let textGridSize = document.querySelector('.input-sketch-value');
+
+let allGridSquares; // Updated in createGrid()
 
 let defaultGridSize = 16;
 sketchContainer.style.gridTemplateRows = `repeat(${defaultGridSize} 1fr)`;
 sketchContainer.style.gridTemplateColumns = `repeat(${defaultGridSize}, 1fr)`;
 
-let inputGridSize = document.querySelector('.input-sketch-size')
-let textGridSize = document.querySelector('.input-sketch-value');
-
 textGridSize.textContent = `${defaultGridSize} x ${defaultGridSize}`;
+
+// Input color picker 
+let inputColorPick = document.querySelector('.input-color-picker');
+
+function paintSquare (squareEl) {
+    let currentColor = inputColorPick.value;
+
+    squareEl.style.background = currentColor;
+}
 
 
 // Function to create grid
@@ -21,6 +32,8 @@ function createGrid (n) {
         sketchContainer.appendChild(newGridSquare);
     }
 
+    // Create nodeList of grid-squares
+    allGridSquares = sketchContainer.querySelectorAll('.grid-square');
 }
 
 // Default 16x16 grid when page is loaded
