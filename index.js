@@ -1,8 +1,6 @@
 // Sketch container - DOM, values and style
-let sketchContainer = document.querySelector('.sketch-container');
+const sketchContainer = document.querySelector('.sketch-container');
 
-let inputGridSize = document.querySelector('.input-sketch-size')
-let textGridSize = document.querySelector('.input-sketch-value');
 
 let allGridSquares; // Updated in createGrid()
 
@@ -10,14 +8,16 @@ let defaultGridSize = 16;
 sketchContainer.style.gridTemplateRows = `repeat(${defaultGridSize} 1fr)`;
 sketchContainer.style.gridTemplateColumns = `repeat(${defaultGridSize}, 1fr)`;
 
-textGridSize.textContent = `${defaultGridSize} x ${defaultGridSize}`;
 
-// Settings elements - input and buttons
-let inputColorPick = document.querySelector('.input-color-picker');
-let btnColorMode = document.querySelector('.btn-color-mode');
-let btnRainbowMode = document.querySelector('.btn-rainbow-mode');
-let btnEraseMode = document.querySelector('.btn-erase-mode');
-let btnClearSketch = document.querySelector('.btn-clear-sketch');
+// Settings elements - inputs, title and buttons
+const textGridSize = document.querySelector('.input-sketch-value');
+textGridSize.textContent = `${defaultGridSize} x ${defaultGridSize}`;   
+const inputGridSize = document.querySelector('.input-sketch-size')
+const inputColorPick = document.querySelector('.input-color-picker');
+const btnColorMode = document.querySelector('.btn-color-mode');
+const btnRainbowMode = document.querySelector('.btn-rainbow-mode');
+const btnEraseMode = document.querySelector('.btn-erase-mode');
+const btnClearSketch = document.querySelector('.btn-clear-sketch');
 
 
 // Function to color square
