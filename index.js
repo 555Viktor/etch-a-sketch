@@ -12,9 +12,15 @@ sketchContainer.style.gridTemplateColumns = `repeat(${defaultGridSize}, 1fr)`;
 
 textGridSize.textContent = `${defaultGridSize} x ${defaultGridSize}`;
 
-// Input color picker 
+// Settings elements - input and buttons
 let inputColorPick = document.querySelector('.input-color-picker');
+let btnColorMode = document.querySelector('.btn-color-mode');
+let btnRainbowMode = document.querySelector('.btn-rainbow-mode');
+let btnEraseMode = document.querySelector('.btn-erase-mode');
+let btnClearSketch = document.querySelector('.btn-clear-sketch');
 
+
+// Function to color square
 function paintSquare (squareEl) {
     let currentColor = inputColorPick.value;
 
@@ -53,7 +59,7 @@ function enableSquareColoring () {
 createGrid(defaultGridSize)
 enableSquareColoring()
 
-// Track the value of inputGridSize and dynamically create squares based on input
+// Track the value of inputGridSize and dynamically manage squares based on input
 inputGridSize.addEventListener('change', () => {
     let rangeValue = inputGridSize.value;
 
