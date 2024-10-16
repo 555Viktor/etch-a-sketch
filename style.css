@@ -34,6 +34,10 @@ body {
 .sketch-container {
     background: white;
     border: 1px solid black;
+
     width: 550px;
     height: 550px;
+
+    display: grid;
+    
 }

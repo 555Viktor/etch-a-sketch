@@ -5,11 +5,21 @@ let sketchContainer = document.querySelector('.sketch-container');
 
 function createGrid (n) {
 
-    for (let i = 0; i < n; i++) {
-        let newGridSquare = document.createElement('div');
-        newGridSquare.className = 'grid-square'; 
-        sketchContainer.appendChild(newGridSquare);
+    for (let i = 1; i <= n; i++) {
+
+        let newGridRow = document.createElement('div');
+        newGridRow.className = 'grid-row';
+
+        for (let j = 1; j <= n; j++) {
+            let newGridCol = document.createElement('div');
+            newGridCol.className = 'grid-col';
+
+            newGridRow.appendChild(newGridCol);
+        }
+
+        sketchContainer.appendChild(newGridRow);
+
     }
 }
 
-createGrid(55)
+createGrid(16)
