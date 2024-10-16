@@ -7,16 +7,31 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <header id="headerDom">
-
+    <header id="header-dom">
+        <h1>Etch-a-sketch</h1>
     </header>
 
-    <main id="mainDom">
+    <main id="main-dom">
 
+        <div class="settings-container">
+            <input type="color" class="setting input-color-picker">
+
+            <button class="setting btn-color-mode">Color Mode</button>
+            <button class="setting btn-rainbow-mode">Rainbow Mode</button>
+            <button class="setting btn-eraser-mode">Eraser</button>
+            <button class="setting btn-clear-sketch">Clear Sketch</button>
+
+            <title class="input-sketch-value">16x16</title>
+            <input type="range" class="setting input-sketch-size">
+        </div>
+
+        <div class="sketch-container" id="sketch-grid-dom">
+
+        </div>
     </main>
 
-    <footer id="footerDom">
-
+    <footer id="footer-dom">
+        Created by 555Viktor
     </footer>
     <!-- JS -->
      <script src="./index.js"></script>
