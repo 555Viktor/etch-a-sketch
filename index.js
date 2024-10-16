@@ -1,25 +1,20 @@
 // DOM Elements
-
 let sketchContainer = document.querySelector('.sketch-container');
-// Function to dynamically create gridSquares inside sketchContainer
+
+let gridSize = 16;
+sketchContainer.style.gridTemplateRows = `repeat(${gridSize}, 1fr)`;
+sketchContainer.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
+
 
 function createGrid (n) {
 
-    for (let i = 1; i <= n; i++) {
+    for (let i = 1; i <= n * n; i++) { 
+        let newGridSquare = document.createElement('div');
+        newGridSquare.className = 'grid-square';
 
-        let newGridRow = document.createElement('div');
-        newGridRow.className = 'grid-row';
-
-        for (let j = 1; j <= n; j++) {
-            let newGridCol = document.createElement('div');
-            newGridCol.className = 'grid-col';
-
-            newGridRow.appendChild(newGridCol);
-        }
-
-        sketchContainer.appendChild(newGridRow);
-
+        sketchContainer.appendChild(newGridSquare);
     }
+
 }
 
 createGrid(16)
