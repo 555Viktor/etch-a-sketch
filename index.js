@@ -27,12 +27,12 @@ function createGrid (n) {
 createGrid(defaultGridSize)
 
 // Track the value of inputGridSize and dynamically create squares based on input
-inputGridSize.addEventListener('input', () => {
+inputGridSize.addEventListener('change', () => {
     let rangeValue = inputGridSize.value;
 
     sketchContainer.style.gridTemplateRows = `repeat(${rangeValue}, 1fr)`;
     sketchContainer.style.gridTemplateColumns = `repeat(${rangeValue}, 1fr)`;
 
-    createGrid(rangeValue);
     textGridSize.textContent = `${rangeValue} x ${rangeValue}`;
+    createGrid(rangeValue);
 })
