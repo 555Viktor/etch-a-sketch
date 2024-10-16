@@ -22,7 +22,7 @@ function paintSquare (squareEl) {
 }
 
 
-// Function to create grid
+// Grid creation and management
 function createGrid (n) {
 
     for (let i = 1; i <= n * n; i++) { 
@@ -36,8 +36,22 @@ function createGrid (n) {
     allGridSquares = sketchContainer.querySelectorAll('.grid-square');
 }
 
-// Default 16x16 grid when page is loaded
+function clearGrid () {
+    sketchContainer.innerHTML = '';
+}
+
+// Enable coloring of squares
+function enableSquareColoring () {
+    if (allGridSquares) {
+        allGridSquares.forEach(square => {
+            square.addEventListener('mouseover', () => paintSquare(square));
+        })
+    }
+}
+
+// Default colorable 16x16 grid when page is loaded
 createGrid(defaultGridSize)
+enableSquareColoring()
 
 // Track the value of inputGridSize and dynamically create squares based on input
 inputGridSize.addEventListener('change', () => {
@@ -46,6 +60,10 @@ inputGridSize.addEventListener('change', () => {
     sketchContainer.style.gridTemplateRows = `repeat(${rangeValue}, 1fr)`;
     sketchContainer.style.gridTemplateColumns = `repeat(${rangeValue}, 1fr)`;
 
-    textGridSize.textContent = `${rangeValue} x ${rangeValue}`;
+    clearGrid();
     createGrid(rangeValue);
+    enableSquareColoring();
+
+    textGridSize.textContent = `${rangeValue} x ${rangeValue}`;
 })
+
