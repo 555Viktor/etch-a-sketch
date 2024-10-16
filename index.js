@@ -19,15 +19,6 @@ const btnRainbowMode = document.querySelector('.btn-rainbow-mode');
 const btnEraseMode = document.querySelector('.btn-erase-mode');
 const btnClearSketch = document.querySelector('.btn-clear-sketch');
 
-
-// Function to color square
-function paintSquare (squareEl) {
-    let currentColor = inputColorPick.value;
-
-    squareEl.style.background = currentColor;
-}
-
-
 // Grid creation and management
 function createGrid (n) {
 
@@ -46,18 +37,66 @@ function clearGrid () {
     sketchContainer.innerHTML = '';
 }
 
-// Enable coloring of squares
-function enableSquareColoring () {
+// Settings - functions for different modes 
+
+function colorSquare (squareEl) {
+    let currentColor = inputColorPick.value;
+
+    squareEl.style.background = currentColor;
+}
+
+function enableColorMode () {
     if (allGridSquares) {
         allGridSquares.forEach(square => {
-            square.addEventListener('mouseover', () => paintSquare(square));
+            square.addEventListener('mouseover', () => colorSquare(square));
         })
     }
 }
 
+function disableColorMode () {
+    if (allGridSquares) {
+        allGridSquares.forEach(square => {
+            square.removeEventListener('mouseover', () => colorSquare(square));
+        })
+    } 
+}
+
+function eraseSquare (squareEl) {
+    squareEl.style.background = '#fff'; // white
+}
+
+function enableEraseMode () {
+    if (allGridSquares) {
+        allGridSquares.forEach(square => {
+            square.addEventListener('mouseover', () => eraseSquare(square));
+        })
+    }
+}
+
+function disableEraseMode () {
+    if (allGridSquares) {
+        allGridSquares.forEach(square => {
+            square.removeEventListener('mouseover', () => eraseSquare(square));
+        })
+    }   
+}
+
+// Settings els event listeners
+btnColorMode.addEventListener('click', () => {
+    disableEraseMode()
+    
+    enableColorMode()
+})
+
+btnEraseMode.addEventListener('click', () => {
+    disableColorMode();
+    enableEraseMode();
+})
+
+
 // Default colorable 16x16 grid when page is loaded
 createGrid(defaultGridSize)
-enableSquareColoring()
+enableColorMode()
 
 // Track the value of inputGridSize and dynamically manage squares based on input
 inputGridSize.addEventListener('change', () => {
@@ -68,7 +107,7 @@ inputGridSize.addEventListener('change', () => {
 
     clearGrid();
     createGrid(rangeValue);
-    enableSquareColoring();
+    enableColorMode();
 
     textGridSize.textContent = `${rangeValue} x ${rangeValue}`;
 })
