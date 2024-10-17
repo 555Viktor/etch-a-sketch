@@ -2,17 +2,20 @@
 const sketchContainer = document.querySelector('.sketch-container');
 
 let allGridSquares; // Updated in createGrid()
-let defaultGridSize = 16;
+let bordersEnabled; // Updated in sketchBorder functions
+
+const defaultGridSize = 16;
 
 sketchContainer.style.gridTemplateRows = `repeat(${defaultGridSize} 1fr)`;
 sketchContainer.style.gridTemplateColumns = `repeat(${defaultGridSize}, 1fr)`;
 
-// Settings elements - inputs, title and buttons
+// Settings container els- inputs, title and buttons
 const textGridSize = document.querySelector('.input-sketch-value');
 textGridSize.textContent = `${defaultGridSize} x ${defaultGridSize}`;   
 const inputGridSize = document.querySelector('.input-sketch-size')
 const inputColorPick = document.querySelector('.input-color-picker');
-const inputEnableBorders = document.querySelector('.input-enable-borders');
+const inputCheckBorders = document.querySelector('.input-enable-borders');
+const btnChangeBackground = document.querySelector('.btn-change-bg');
 const btnColorMode = document.querySelector('.btn-color-mode');
 const btnRainbowMode = document.querySelector('.btn-rainbow-mode');
 const btnEraseMode = document.querySelector('.btn-erase-mode');
@@ -59,6 +62,11 @@ function disableColorMode () {
             square.removeEventListener('mouseover', () => colorSquare(square));
         })
     } 
+}
+
+// Color entire grid
+function changeSketchBackground () {
+    allGridSquares.forEach(square => colorSquare(square));
 }
 
 function randomColorSquare (squareEl) {
@@ -114,6 +122,32 @@ function resetSquareColors () {
     })
 }
 
+// Add sketch borders functionality
+
+function enableSketchBorders () {
+    inputCheckBorders.checked = true;
+    bordersEnabled = true;
+
+    const defaultBorderCss = '1px solid #000000';
+    allGridSquares.forEach(square => {
+        square.style.border = defaultBorderCss;
+    })
+}
+
+function disableSketchBorders () {
+    inputCheckBorders.checked = false;
+    bordersEnabled = false;
+
+    allGridSquares.forEach(square => {
+        square.style.border = 'none';
+    });
+}
+
+inputCheckBorders.addEventListener('change', function() {
+    if (this.checked) enableSketchBorders();
+    else disableSketchBorders();
+});
+
 // Settings els event listeners
 btnColorMode.addEventListener('click', () => {
     disableRandomColorMode();
@@ -137,10 +171,7 @@ btnClearSketch.addEventListener('click', () => {
     resetSquareColors();
 })
 
-
-// Default colorable 16x16 grid when page is loaded
-createGrid(defaultGridSize)
-enableColorMode()
+btnChangeBackground.addEventListener('click', () => changeSketchBackground())
 
 // Track the value of inputGridSize and dynamically manage squares based on input
 inputGridSize.addEventListener('change', () => {
@@ -154,38 +185,15 @@ inputGridSize.addEventListener('change', () => {
     enableColorMode();
 
     textGridSize.textContent = `${rangeValue} x ${rangeValue}`;
+
+    // Manage sketch borders
+    if (bordersEnabled) enableSketchBorders();
+    else disableSketchBorders();
 })
 
-
-
-
-// Add sketch borders functionality
-
-function enableSketchBorders () {
-    inputEnableBorders.checked = true;
-    
-    const defaultBorderCss = '1px solid #000000';
-
-    allGridSquares.forEach(square => {
-        square.style.border = defaultBorderCss;
-    })
-
+// Create default, colorable 16x16 grid with borders when page is loaded
+window.onload = () => {
+    createGrid(defaultGridSize);
+    enableColorMode();
+    enableSketchBorders();
 }
-
-function disableSketchBorders() {
-    inputEnableBorders.checked = false;
-
-    allGridSquares.forEach(square => {
-        square.style.border = 'none';
-    });
-}
-
-enableSketchBorders();
-
-inputEnableBorders.addEventListener('change', function() {
-    if (this.checked) {
-        enableSketchBorders();
-    } else {
-        disableSketchBorders();
-    }
-});
