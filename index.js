@@ -1,13 +1,11 @@
 // Sketch container - DOM, values and style
 const sketchContainer = document.querySelector('.sketch-container');
 
-
 let allGridSquares; // Updated in createGrid()
-
 let defaultGridSize = 16;
+
 sketchContainer.style.gridTemplateRows = `repeat(${defaultGridSize} 1fr)`;
 sketchContainer.style.gridTemplateColumns = `repeat(${defaultGridSize}, 1fr)`;
-
 
 // Settings elements - inputs, title and buttons
 const textGridSize = document.querySelector('.input-sketch-value');
@@ -33,16 +31,16 @@ function createGrid (n) {
     allGridSquares = sketchContainer.querySelectorAll('.grid-square');
 }
 
-function clearGrid () {
+function clearGridContainer () {
     sketchContainer.innerHTML = '';
 }
 
 // Settings - functions for different modes 
 
 function colorSquare (squareEl) {
-    let currentColor = inputColorPick.value;
+    let selectedColor = inputColorPick.value;
 
-    squareEl.style.background = currentColor;
+    squareEl.style.background = selectedColor;
 }
 
 function enableColorMode () {
@@ -60,6 +58,31 @@ function disableColorMode () {
         })
     } 
 }
+
+function randomColorSquare (squareEl) {
+    const randomR = Math.floor(Math.random() * 256)
+    const randomG = Math.floor(Math.random() * 256)
+    const randomB = Math.floor(Math.random() * 256)
+
+    squareEl.style.background = `rgb(${randomR}, ${randomG}, ${randomB})`;
+}
+
+function enableRandomColorMode () {
+    if (allGridSquares) {
+        allGridSquares.forEach(square => {
+            square.addEventListener('mouseover', () => randomColorSquare(square));
+        })
+    }
+}
+
+function disableRandomColorMode () {
+    if (allGridSquares) {
+        allGridSquares.forEach(square => {
+            square.removeEventListener('mouseover', () => randomColorSquare(square));
+        })
+    } 
+}
+
 
 function eraseSquare (squareEl) {
     squareEl.style.background = '#fff'; // white
@@ -81,16 +104,37 @@ function disableEraseMode () {
     }   
 }
 
+// Clear sketch button
+
+function resetSquareColors () {
+
+    allGridSquares.forEach(square => {
+        eraseSquare(square);
+    })
+
+}
+
 // Settings els event listeners
 btnColorMode.addEventListener('click', () => {
-    disableEraseMode()
-    
-    enableColorMode()
+    disableRandomColorMode();
+    disableEraseMode();
+    enableColorMode();
+})
+
+btnRainbowMode.addEventListener('click', () => {
+    disableColorMode();
+    disableEraseMode();
+    enableRandomColorMode();
 })
 
 btnEraseMode.addEventListener('click', () => {
     disableColorMode();
+    disableRandomColorMode();
     enableEraseMode();
+})
+
+btnClearSketch.addEventListener('click', () => {
+    resetSquareColors();
 })
 
 
@@ -105,7 +149,7 @@ inputGridSize.addEventListener('change', () => {
     sketchContainer.style.gridTemplateRows = `repeat(${rangeValue}, 1fr)`;
     sketchContainer.style.gridTemplateColumns = `repeat(${rangeValue}, 1fr)`;
 
-    clearGrid();
+    clearGridContainer();
     createGrid(rangeValue);
     enableColorMode();
 
