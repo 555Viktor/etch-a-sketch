@@ -40,7 +40,3 @@ body {
 
     display: grid;
 }
-
-.grid-square {
-    border: 1px solid black;
-}

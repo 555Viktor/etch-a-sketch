@@ -12,10 +12,12 @@ const textGridSize = document.querySelector('.input-sketch-value');
 textGridSize.textContent = `${defaultGridSize} x ${defaultGridSize}`;   
 const inputGridSize = document.querySelector('.input-sketch-size')
 const inputColorPick = document.querySelector('.input-color-picker');
+const inputEnableBorders = document.querySelector('.input-enable-borders');
 const btnColorMode = document.querySelector('.btn-color-mode');
 const btnRainbowMode = document.querySelector('.btn-rainbow-mode');
 const btnEraseMode = document.querySelector('.btn-erase-mode');
 const btnClearSketch = document.querySelector('.btn-clear-sketch');
+
 
 // Grid creation and management
 function createGrid (n) {
@@ -107,11 +109,9 @@ function disableEraseMode () {
 // Clear sketch button
 
 function resetSquareColors () {
-
     allGridSquares.forEach(square => {
         eraseSquare(square);
     })
-
 }
 
 // Settings els event listeners
@@ -156,3 +156,36 @@ inputGridSize.addEventListener('change', () => {
     textGridSize.textContent = `${rangeValue} x ${rangeValue}`;
 })
 
+
+
+
+// Add sketch borders functionality
+
+function enableSketchBorders () {
+    inputEnableBorders.checked = true;
+    
+    const defaultBorderCss = '1px solid #000000';
+
+    allGridSquares.forEach(square => {
+        square.style.border = defaultBorderCss;
+    })
+
+}
+
+function disableSketchBorders() {
+    inputEnableBorders.checked = false;
+
+    allGridSquares.forEach(square => {
+        square.style.border = 'none';
+    });
+}
+
+enableSketchBorders();
+
+inputEnableBorders.addEventListener('change', function() {
+    if (this.checked) {
+        enableSketchBorders();
+    } else {
+        disableSketchBorders();
+    }
+});
