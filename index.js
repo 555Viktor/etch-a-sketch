@@ -11,10 +11,12 @@ sketchContainer.style.gridTemplateColumns = `repeat(${defaultGridSize}, 1fr)`;
 
 // Settings container els- inputs, title and buttons
 const textGridSize = document.querySelector('.input-sketch-value');
-textGridSize.textContent = `${defaultGridSize} x ${defaultGridSize}`;   
+textGridSize.textContent = `${defaultGridSize} x ${defaultGridSize}`;  
+
 const inputGridSize = document.querySelector('.input-sketch-size')
 const inputColorPick = document.querySelector('.input-color-picker');
 const inputCheckBorders = document.querySelector('.input-enable-borders');
+
 const btnChangeBackground = document.querySelector('.btn-change-bg');
 const btnColorMode = document.querySelector('.btn-color-mode');
 const btnRainbowMode = document.querySelector('.btn-rainbow-mode');
@@ -24,7 +26,6 @@ const btnClearSketch = document.querySelector('.btn-clear-sketch');
 
 // Grid creation and management
 function createGrid (n) {
-
     for (let i = 1; i <= n * n; i++) { 
         let newGridSquare = document.createElement('div');
         newGridSquare.className = 'grid-square';
@@ -40,8 +41,7 @@ function clearGridContainer () {
     sketchContainer.innerHTML = '';
 }
 
-// Settings - functions for different modes 
-
+// Settings - functions for all modes 
 function colorSquare (squareEl) {
     let selectedColor = inputColorPick.value;
 
@@ -122,7 +122,7 @@ function resetSquareColors () {
     })
 }
 
-// Add sketch borders functionality
+// Add sketch borders
 
 function enableSketchBorders () {
     inputCheckBorders.checked = true;
@@ -143,12 +143,12 @@ function disableSketchBorders () {
     });
 }
 
-inputCheckBorders.addEventListener('change', function() {
-    if (this.checked) enableSketchBorders();
+// Settings els event listeners
+inputCheckBorders.addEventListener('change', event => {
+    if (event.target.checked) enableSketchBorders();
     else disableSketchBorders();
 });
 
-// Settings els event listeners
 btnColorMode.addEventListener('click', () => {
     disableRandomColorMode();
     disableEraseMode();
