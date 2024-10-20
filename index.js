@@ -5,6 +5,7 @@ let allGridSquares; // Updated in createGrid()
 let bordersEnabled; // Updated in sketchBorder functions
 
 const defaultGridSize = 16;
+const defaultSelectedColor = '#00bfff'; // deep sky blue
 
 sketchContainer.style.gridTemplateRows = `repeat(${defaultGridSize} 1fr)`;
 sketchContainer.style.gridTemplateColumns = `repeat(${defaultGridSize}, 1fr)`;
@@ -18,11 +19,12 @@ const inputColorPick = document.querySelector('.input-color-picker');
 const inputCheckBorders = document.querySelector('.input-enable-borders');
 
 const btnChangeBackground = document.querySelector('.btn-change-bg');
+const allBtnsColorMode = document.querySelectorAll('.btn-mode');
+
 const btnColorMode = document.querySelector('.btn-color-mode');
 const btnRainbowMode = document.querySelector('.btn-rainbow-mode');
 const btnEraseMode = document.querySelector('.btn-erase-mode');
 const btnClearSketch = document.querySelector('.btn-clear-sketch');
-
 
 // Grid creation and management
 function createGrid (n) {
@@ -46,6 +48,7 @@ function colorSquare (squareEl) {
     let selectedColor = inputColorPick.value;
 
     squareEl.style.background = selectedColor;
+
 }
 
 function enableColorMode () {
@@ -95,7 +98,7 @@ function disableRandomColorMode () {
 
 
 function eraseSquare (squareEl) {
-    squareEl.style.background = '#fff'; // white
+    squareEl.style.background = '#FFFFF0'; // linen white
 }
 
 function enableEraseMode () {
@@ -153,6 +156,8 @@ btnColorMode.addEventListener('click', () => {
     disableRandomColorMode();
     disableEraseMode();
     enableColorMode();
+
+    btnColorMode.style.background = inputColorPick.value;
 })
 
 btnRainbowMode.addEventListener('click', () => {
@@ -197,3 +202,9 @@ window.onload = () => {
     enableColorMode();
     enableSketchBorders();
 }
+
+inputColorPick.addEventListener('change', () => {
+        let selectedColor = inputColorPick.value;
+
+        btnColorMode.style.background = selectedColor;
+})
