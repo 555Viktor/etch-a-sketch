@@ -19,11 +19,12 @@ body {
     align-items: center;
 
     background: #007cb9;
-    overflow-y: hidden;
+    overflow-y: hidden; 
 }
 
 #main {
     width: 100%;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,6 +37,7 @@ body {
 #header {
     width: 100%;
 }
+
 #header h1 {
     font-size: 3rem;
     text-align: center;
@@ -49,11 +51,11 @@ body {
     align-items: center;
 
     border: 3px solid;
-    padding: 1rem;
     border-radius: 24px;
 
     background: #FFC000;
     gap: 1rem;
+    padding: 1rem;
 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 4px 20px rgba(0, 0, 0, 0.3);
 }
@@ -71,8 +73,12 @@ body {
     border-radius: 20px;
 
     background: #ffd58b;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4), /* Primary shadow */
-    0px 0px 20px rgba(0, 0, 0, 0.2); /* Soft outer glow */
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4), 
+    0px 0px 20px rgba(0, 0, 0, 0.2); 
+}
+
+.settings-container .checkbox-title {
+    font-size: 1.2rem;
 }
 
 .sketch-container {
@@ -83,22 +89,48 @@ body {
     height: 560px;
 
     display: grid;
-    box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.5), /* Stronger primary shadow */
-                0px 0px 30px rgba(0, 0, 0, 0.3); /* More noticeable soft glow */
+    box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.5),
+                0px 0px 30px rgba(0, 0, 0, 0.3); 
 }
 
-.grid-square {
-    background: #FFFFF0;
+.sketch-container .grid-square {
+    background: #FFFFF0; /* Default grid-square color */
 }
 
+/* Style of color selection input */
+.input-color-picker {
+    width: 60px; 
+    height: 60px; 
+
+    border: 2px solid; 
+    border-radius: 50%; 
+
+    outline: none; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.input-color-picker::-webkit-color-swatch {
+    border-radius: 50%; 
+}
+
+.input-color-picker::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+.input-color-picker::-webkit-color-swatch {
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+/* Settings hover && focus states */
 .settings-container button.setting:hover,
 .settings-container button.btn-mode:focus:not(.btn-rainbow-mode) {
     background: #cba37b;
 }
 
-/* Copied from uiGradients */
 .settings-container button.btn-rainbow-mode:hover,
 .settings-container button.btn-rainbow-mode:focus{
+    /* Copied from uiGradients */
     background: #8360c3;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #2ebf91, #8360c3);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #2ebf91, #8360c3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */   
@@ -108,44 +140,17 @@ body {
     background: #E9DCC9;
 }
 
-/* Refactor */
-
-footer {
+#footer {
     font-size: 1.2rem;
     margin-bottom: 1.4rem;
 }
-footer a {
+
+#footer a {
     color: black;
     text-decoration: none;
 }
 
-footer .github-icon {
+#footer .github-icon {
     width: 32px;
     height: 32px;
 }
-
-.checkbox-title {
-    font-size: 1.2rem;
-}
-
-.input-color-picker {
-    width: 60px; /* Set width */
-    height: 60px; /* Set height */
-    border: 2px solid; /* Remove border */
-    border-radius: 50%; /* Make it circular */
-    outline: none; /* Remove outline */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 4px 20px rgba(0, 0, 0, 0.3);
-}
-
-.input-color-picker::-webkit-color-swatch {
-    border-radius: 50%; /* Make the color swatch circular */
-}
-
-input[type='color']::-webkit-color-swatch-wrapper {
-    padding: 0;
-  }
-
-  input[type='color']::-webkit-color-swatch {
-    border: none;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  }
