@@ -32,7 +32,7 @@ To get started with this project locally:
 
 1. Clone the repository to your machine:
    ```bash
-   git clone https://github.com/yourusername/etch-a-sketch.git
+   git clone https://github.com/555Viktor/etch-a-sketch.git
    ```
 
 2. Navigate into the project folder:
