@@ -57,5 +57,3 @@ To get started with this project locally:
 
 ## Acknowledgements  
 This project was built as part of **The Odin Project**'s curriculum, which provided the foundational knowledge needed to develop this app. Big thanks to The Odin Project!
-
-![Screenshot](images/etch-a-sketch-preview.png)
