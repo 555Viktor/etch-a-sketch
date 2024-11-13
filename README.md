@@ -2,7 +2,7 @@
 
 ## Live preview
 
-Check out the project deployed here: https://555viktor.github.io/etch-a-sketch/
+Check out the deployed project here: https://555viktor.github.io/etch-a-sketch/
 
 ## Project Overview  
 
