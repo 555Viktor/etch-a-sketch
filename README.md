@@ -1,17 +1,12 @@
-# etch-a-sketch
-
-Certainly! Here’s the freshened-up README without emojis:
-
----
-
-# Etch-a-Sketch Clone
+# Etch-a-Sketch App ✏️
 
 ## Project Overview  
-This is a web-based Etch-a-Sketch clone built with **HTML**, **CSS**, and **JavaScript**. Inspired by the classic drawing toy, this project was developed as part of **The Odin Project**'s curriculum. The app allows users to interact with a customizable grid, drawing in various modes and colors, with dynamic controls to reset or modify the canvas as needed.
+
+This is a web-based Etch-a-Sketch clone created using HTML, CSS, and JavaScript. Inspired by the classic toy, this project was completed as part of an assignment for The Odin Project. It provides an interactive drawing grid with customizable features and dynamic controls for the user. 
 
 ## Live preview
 
-Check out the project deployed here: [Insert demo link]
+Check out the project deployed here: https://555viktor.github.io/etch-a-sketch/
 
 ## Features
 
