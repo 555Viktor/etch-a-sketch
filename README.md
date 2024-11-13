@@ -1,4 +1,4 @@
-# Etch-a-Sketch App ✏️
+# Etch-a-Sketch ✏️
 
 ## Live preview
 
