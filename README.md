@@ -56,4 +56,4 @@ To get started with this project locally:
    - **Fill Background**: Change the background color of the grid.
 
 ## Acknowledgements  
-This project was built as part of **The Odin Project**'s curriculum, which provided the foundational knowledge needed to develop this app. Big thanks to The Odin Project for the valuable learning resources.
+This project was built as part of **The Odin Project**'s curriculum, which provided the foundational knowledge needed to develop this app. Big thanks to The Odin Project!
