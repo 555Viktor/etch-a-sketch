@@ -1,6 +1,6 @@
 # Etch-a-Sketch ✏️
 
-![Screenshot](images/etch-a-sketch-preview-github.png)
+[![Screenshot](images/etch-a-sketch-preview-github.png)](https://555viktor.github.io/etch-a-sketch/)
 
 ## Live preview
 
