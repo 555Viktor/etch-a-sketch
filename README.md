@@ -1,5 +1,7 @@
 # Etch-a-Sketch ✏️
 
+![Screenshot](images/etch-a-sketch-preview-github.png)
+
 ## Live preview
 
 Check out the deployed project here: https://555viktor.github.io/etch-a-sketch/
@@ -58,4 +60,3 @@ To get started with this project locally:
 ## Acknowledgements  
 This project was built as part of **The Odin Project**'s curriculum, which provided the foundational knowledge needed to develop this app. Big thanks to The Odin Project!
 
-![Screenshot](images/etch-a-sketch-preview-github.png)
