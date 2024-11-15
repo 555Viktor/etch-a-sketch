@@ -21,6 +21,7 @@ body {
     background: #007cb9;
 }
 
+/* Main container styling */
 #main {
     width: 100%;
 
@@ -33,6 +34,7 @@ body {
     margin-bottom: 1rem;
 }
 
+/* Header styling */
 #header {
     width: 100%;
 }
@@ -44,7 +46,11 @@ body {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
+/* Sketch settings styling */
 .settings-container {
+    width: 17%;
+    height: 560px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -59,21 +65,29 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
+.input-settings,
+.input-range-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .settings-container .setting {
     cursor: pointer;
     font-size: 1.12rem;
+
+    margin-bottom: 0.9rem;
 }
 
 .settings-container button.setting {
     width: 100%;
+
     padding: 0.8rem;
 
     border: none;
     border-radius: 20px;
 
     background: #ffd58b;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4), 
-    0px 0px 20px rgba(0, 0, 0, 0.2); 
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4), 0px 0px 20px rgba(0, 0, 0, 0.2); 
 }
 
 .settings-container .checkbox-title {
@@ -152,4 +166,24 @@ body {
 #footer .github-icon {
     width: 32px;
     height: 32px;
+}
+
+@media (max-width: 876px) {
+
+    #main {
+        flex-direction: column-reverse;
+    }
+    
+    .settings-container {
+        flex-direction: row;
+        
+        flex-wrap: wrap;
+        width: 50%;
+    }
+
+    .sketch-container {
+        width: 520px;
+        height: 520px;
+    }
+
 }

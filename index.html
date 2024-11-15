@@ -15,22 +15,28 @@
     <main id="main">
 
         <div class="settings-container">
-            <input type="color" value="#00bfff" class="setting input-color-picker">
 
-            <span class="checkbox-title">Enable borders
-                <input type="checkbox" class="setting input-enable-borders">
-            </span>
+            <div class="input-settings">
+                <input type="color" value="#00bfff" class="setting input-color-picker">
 
-            <div class="input-range-wrapper">
-                <strong class="input-sketch-value"></strong>
-                <input type="range" min="16" max="64" value="16" class="setting input-sketch-size">
+                <span class="checkbox-title">Enable borders
+                    <input type="checkbox" class="setting input-enable-borders">
+                </span>
+    
+                <div class="input-range-wrapper">
+                    <strong class="input-sketch-value"></strong>
+                    <input type="range" min="16" max="64" value="16" class="setting input-sketch-size">
+                </div>
             </div>
 
-            <button class="setting btn-mode btn-color-mode">Color Mode</button>
-            <button class="setting btn-mode btn-rainbow-mode">Random Mode</button>
-            <button class="setting btn-mode btn-erase-mode">Eraser</button>
-            <button class="setting btn-change-bg">Change background</button>
-            <button class="setting btn-clear-sketch">Clear Sketch</button>
+            <div class="btn-settings">
+                <button class="setting btn-mode btn-color-mode">Color Mode</button>
+                <button class="setting btn-mode btn-rainbow-mode">Random Mode</button>
+                <button class="setting btn-mode btn-erase-mode">Eraser</button>
+                <button class="setting btn-change-bg">Change background</button>
+                <button class="setting btn-clear-sketch">Clear Sketch</button>
+            </div>
+
         </div>
 
         <div class="sketch-container" id="sketch-grid-dom"></div>
