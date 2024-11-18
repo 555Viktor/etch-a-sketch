@@ -9,14 +9,21 @@
     font-weight: bold;
 }
 
+/* Flex containers */
+body,
+#main,
+.settings-container,
+.input-settings,
+.input-range-wrapper {
+    display: flex;
+}
+
 body {
     min-height: 100vh;
 
-    display: flex;
-    flex-direction: column;
-
     justify-content: space-evenly;
     align-items: center;
+    flex-direction: column;
 
     background: #007cb9;
 }
@@ -24,14 +31,12 @@ body {
 /* Main container styling */
 #main {
     width: 100%;
-
-    display: flex;
+    
     justify-content: center;
     align-items: center;
-
+    
     gap: 1.6rem;
-    margin-block: 1.4rem;
-    margin-bottom: 1rem;
+    margin-block: 1.4rem 1rem;
 }
 
 /* Header styling */
@@ -42,7 +47,6 @@ body {
 #header h1 {
     font-size: 3rem;
     text-align: center;
-
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
@@ -51,8 +55,7 @@ body {
     width: 20%;
     min-height: 300px;
     max-height: 600px;
-
-    display: flex;
+    
     flex-direction: column;
     align-items: center;
 
@@ -68,23 +71,21 @@ body {
 
 .input-settings,
 .input-range-wrapper {
-    display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .settings-container .setting {
-    cursor: pointer;
-    font-size: 1.12rem;
-
     margin-bottom: 0.9rem;
+    font-size: 1.12rem;
+    cursor: pointer;
 }
 
 .settings-container button.setting {
     width: 100%;
 
     padding: 0.8rem;
-
+    
     border: none;
     border-radius: 20px;
 
@@ -112,7 +113,7 @@ body {
     background: #FFFFF0; /* Default grid-square color */
 }
 
-/* Style of color selection input */
+/* Style of color select input */
 .input-settings {
     text-align: center;
 }
@@ -148,7 +149,7 @@ body {
 }
 
 .settings-container button.btn-rainbow-mode:hover,
-.settings-container button.btn-rainbow-mode:focus{
+.settings-container button.btn-rainbow-mode:focus {
     /* Copied from uiGradients */
     background: #8360c3;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #2ebf91, #8360c3);  /* Chrome 10-25, Safari 5.1-6 */
@@ -159,6 +160,7 @@ body {
     background: #E9DCC9;
 }
 
+/* Footer section styling */
 #footer {
     font-size: 1.2rem;
     margin-bottom: 1.4rem;
@@ -170,10 +172,11 @@ body {
 }
 
 #footer .github-icon {
-    width: 32px;
-    height: 32px;
+    width: 2rem;
+    height: 2rem;
 }
 
+/* Media query for tablets/smaller monitons */
 @media (max-width: 1100px) {
 
     #main {
@@ -212,6 +215,7 @@ body {
 
 }
 
+/* Media query for average mobile */
 @media (min-width: 433px) and (max-width: 642px) {
     .settings-container,
     .sketch-container {
@@ -237,6 +241,7 @@ body {
     }
 }
 
+/* Media query for XS smartphones */
 @media (max-width: 432px) {
 
     body {
