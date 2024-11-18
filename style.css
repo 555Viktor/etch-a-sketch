@@ -9,30 +9,37 @@
     font-weight: bold;
 }
 
+/* Flex containers */
+body,
+#main,
+.settings-container,
+.input-settings,
+.input-range-wrapper {
+    display: flex;
+}
+
 body {
     min-height: 100vh;
 
-    display: flex;
-    flex-direction: column;
-
     justify-content: space-evenly;
     align-items: center;
+    flex-direction: column;
 
     background: #007cb9;
 }
 
+/* Main container styling */
 #main {
     width: 100%;
-
-    display: flex;
+    
     justify-content: center;
     align-items: center;
-
+    
     gap: 1.6rem;
-    margin-block: 1.4rem;
-    margin-bottom: 1rem;
+    margin-block: 1.4rem 1rem;
 }
 
+/* Header styling */
 #header {
     width: 100%;
 }
@@ -40,12 +47,15 @@ body {
 #header h1 {
     font-size: 3rem;
     text-align: center;
-
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
+/* Sketch settings styling */
 .settings-container {
-    display: flex;
+    width: 20%;
+    min-height: 300px;
+    max-height: 600px;
+    
     flex-direction: column;
     align-items: center;
 
@@ -59,21 +69,28 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
+.input-settings,
+.input-range-wrapper {
+    flex-direction: column;
+    align-items: center;
+}
+
 .settings-container .setting {
-    cursor: pointer;
+    margin-bottom: 0.9rem;
     font-size: 1.12rem;
+    cursor: pointer;
 }
 
 .settings-container button.setting {
     width: 100%;
-    padding: 0.8rem;
 
+    padding: 0.8rem;
+    
     border: none;
     border-radius: 20px;
 
     background: #ffd58b;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4), 
-    0px 0px 20px rgba(0, 0, 0, 0.2); 
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.35), 0px 0px 20px rgba(0, 0, 0, 0.2); 
 }
 
 .settings-container .checkbox-title {
@@ -96,7 +113,11 @@ body {
     background: #FFFFF0; /* Default grid-square color */
 }
 
-/* Style of color selection input */
+/* Style of color select input */
+.input-settings {
+    text-align: center;
+}
+
 .input-color-picker {
     width: 60px; 
     height: 60px; 
@@ -128,7 +149,7 @@ body {
 }
 
 .settings-container button.btn-rainbow-mode:hover,
-.settings-container button.btn-rainbow-mode:focus{
+.settings-container button.btn-rainbow-mode:focus {
     /* Copied from uiGradients */
     background: #8360c3;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #2ebf91, #8360c3);  /* Chrome 10-25, Safari 5.1-6 */
@@ -139,6 +160,7 @@ body {
     background: #E9DCC9;
 }
 
+/* Footer section styling */
 #footer {
     font-size: 1.2rem;
     margin-bottom: 1.4rem;
@@ -150,6 +172,121 @@ body {
 }
 
 #footer .github-icon {
-    width: 32px;
-    height: 32px;
+    width: 2rem;
+    height: 2rem;
+}
+
+/* Media query for tablets/smaller monitons */
+@media (max-width: 1100px) {
+
+    #main {
+        flex-direction: column;
+    }
+    
+    .settings-container {
+        flex-direction: row;
+
+        width: 520px;
+        height: 50%;
+    }
+
+    .input-settings {
+        width: 40%;
+
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        gap: 1rem;
+    }
+
+    .btn-settings {
+        width: 60%;
+    }
+
+    .btn-settings button.setting {
+        width: 72%;
+    }
+
+    .sketch-container {
+        width: 520px;
+        height: 520px;
+    }
+
+}
+
+/* Media query for average mobile */
+@media (min-width: 433px) and (max-width: 642px) {
+    .settings-container,
+    .sketch-container {
+        min-height: 360px;
+        min-width: 360px;
+
+        max-height: 420px;
+        max-width: 420px;
+    }
+
+    .input-settings,
+    .btn-settings {
+        width: 50%;
+    }
+
+    .btn-settings button.setting {
+        width: 100%;
+    }
+
+    .input-settings .setting,
+    .btn-settings .setting {
+        font-size: 0.9rem;
+    }
+}
+
+/* Media query for XS smartphones */
+@media (max-width: 432px) {
+
+    body {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .settings-container {
+        padding: 0;
+    }
+
+    .settings-container,
+    .sketch-container {
+        height: 275px;
+        width: 275px;
+    }
+
+    .btn-settings,
+    .input-settings {
+        flex-wrap: wrap;
+    }
+
+    .input-settings {
+        margin: 1rem;
+    }
+
+    .btn-settings button.setting {
+        font-size: 0.65rem;
+        padding: 0.5rem;
+        margin-bottom: 0.6rem;
+    }
+
+    .input-color-picker {
+        width: 48px; 
+        height: 48px; 
+    }
+
+    .input-borders-wrapper label {
+        font-size: 0.85rem;
+    }
+    
+    .input-sketch-value {
+        font-size: 0.85rem;
+    }
+    .input-sketch-size {
+        width: 120px;
+    }
 }

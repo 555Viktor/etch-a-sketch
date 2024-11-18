@@ -1,16 +1,18 @@
 // Sketch container - DOM, values and style
 const sketchContainer = document.querySelector('.sketch-container');
 
-let allGridSquares; // Updated in createGrid()
+let allGridSquares; // Holds Nodelist for all grid squares (Updated in createGrid())
 let bordersEnabled; // Updated in sketchBorder functions
 
 const defaultGridSize = 16;
-const defaultSelectedColor = '#00bfff'; // deep sky blue
+
+const deepSkyBlueHex = '#00BFFF'
+const defaultSelectedColor = deepSkyBlueHex; 
 
 sketchContainer.style.gridTemplateRows = `repeat(${defaultGridSize} 1fr)`;
 sketchContainer.style.gridTemplateColumns = `repeat(${defaultGridSize}, 1fr)`;
 
-// Settings container els- inputs, title and buttons
+// DOM Elements for settings and controls
 const textGridSize = document.querySelector('.input-sketch-value');
 textGridSize.textContent = `${defaultGridSize} x ${defaultGridSize}`;  
 
@@ -43,7 +45,8 @@ function clearGridContainer () {
     sketchContainer.innerHTML = '';
 }
 
-// Settings - functions for all modes 
+// Settings - functions for all modes
+// Enable/disable color, random color and erase mode by adding/removing event listeners
 function colorSquare (squareEl) {
     let selectedColor = inputColorPick.value;
 
@@ -67,10 +70,9 @@ function disableColorMode () {
     } 
 }
 
-// Color entire grid
-function changeSketchBackground () {
+function changeSketchBackground () { // Color entire grid
     allGridSquares.forEach(square => colorSquare(square));
-}
+} 
 
 function randomColorSquare (squareEl) {
     const randomR = Math.floor(Math.random() * 256)
@@ -98,7 +100,8 @@ function disableRandomColorMode () {
 
 
 function eraseSquare (squareEl) {
-    squareEl.style.background = '#FFFFF0'; // linen white
+    const linenWhiteHex = '#FFFFF0';
+    squareEl.style.background = linenWhiteHex;
 }
 
 function enableEraseMode () {
@@ -117,21 +120,19 @@ function disableEraseMode () {
     }   
 }
 
-// Clear sketch button
-
-function resetSquareColors () {
+function resetSquareColors () { // Clear sketch
     allGridSquares.forEach(square => {
         eraseSquare(square);
     })
 }
 
-// Add sketch borders
-
+// Manage sketch borders
 function enableSketchBorders () {
     inputCheckBorders.checked = true;
     bordersEnabled = true;
 
-    const defaultBorderCss = '1px solid #000000';
+    const blackHex = '#000000'
+    const defaultBorderCss = `1px solid ${blackHex}`;
     allGridSquares.forEach(square => {
         square.style.border = defaultBorderCss;
     })
@@ -146,7 +147,7 @@ function disableSketchBorders () {
     });
 }
 
-// Settings els event listeners
+// Add event listeners to setting elements
 inputCheckBorders.addEventListener('change', event => {
     if (event.target.checked) enableSketchBorders();
     else disableSketchBorders();
@@ -196,7 +197,7 @@ inputGridSize.addEventListener('change', () => {
     else disableSketchBorders();
 })
 
-// Create default, colorable 16x16 grid with borders when page is loaded
+// Initialize the default grid and settings on page load
 window.onload = () => {
     createGrid(defaultGridSize);
     enableColorMode();
