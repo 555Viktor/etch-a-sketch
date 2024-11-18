@@ -14,6 +14,7 @@ This is a web-based Etch-a-Sketch clone created using HTML, CSS, and JavaScript.
 
 This project offers a variety of features to make your drawing experience customizable:
 
+- **Fully Responsive** Website adjusts for all screen sizes
 - **Custom Colors:** Pick any color to draw on the grid.
 - **Three Drawing Modes:**  
   - **Color Mode**: Draw using your selected color.  
