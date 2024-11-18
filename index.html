@@ -17,11 +17,15 @@
         <div class="settings-container">
 
             <div class="input-settings">
-                <input type="color" value="#00bfff" class="setting input-color-picker">
+                
+                <div class="input-color-wrapper">
+                    <input type="color" value="#00bfff" class="setting input-color-picker">
+                </div>
 
-                <span class="checkbox-title">Enable borders
-                    <input type="checkbox" class="setting input-enable-borders">
-                </span>
+                <div class="input-borders-wrapper">
+                    <label for="input-checkbox">Enable borders</label>
+                    <input type="checkbox" id="input-checkbox" class="setting input-enable-borders">
+                </div>
     
                 <div class="input-range-wrapper">
                     <strong class="input-sketch-value"></strong>
