@@ -48,8 +48,9 @@ body {
 
 /* Sketch settings styling */
 .settings-container {
-    width: 17%;
-    height: 560px;
+    width: 20%;
+    min-height: 300px;
+    max-height: 600px;
 
     display: flex;
     flex-direction: column;
@@ -71,6 +72,7 @@ body {
     flex-direction: column;
     align-items: center;
 }
+
 .settings-container .setting {
     cursor: pointer;
     font-size: 1.12rem;
@@ -111,6 +113,10 @@ body {
 }
 
 /* Style of color selection input */
+.input-settings {
+    text-align: center;
+}
+
 .input-color-picker {
     width: 60px; 
     height: 60px; 
@@ -168,17 +174,35 @@ body {
     height: 32px;
 }
 
-@media (max-width: 876px) {
+@media (max-width: 1100px) {
 
     #main {
-        flex-direction: column-reverse;
+        flex-direction: column;
     }
     
     .settings-container {
         flex-direction: row;
-        
-        flex-wrap: wrap;
-        width: 50%;
+
+        width: 520px;
+        height: 50%;
+    }
+
+    .input-settings {
+        width: 40%;
+
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        gap: 1rem;
+    }
+
+    .btn-settings {
+        width: 60%;
+    }
+
+    .btn-settings button.setting {
+        width: 72%;
     }
 
     .sketch-container {
@@ -186,4 +210,52 @@ body {
         height: 520px;
     }
 
+}
+
+@media (min-width: 433px) and (max-width: 642px) {
+    .settings-container,
+    .sketch-container {
+        min-height: 360px;
+        min-width: 360px;
+
+        max-height: 420px;
+        max-width: 420px;
+    }
+
+    .input-settings,
+    .btn-settings {
+        width: 50%;
+    }
+
+    .btn-settings button.setting {
+        width: 100%;
+    }
+
+    .input-settings .setting,
+    .btn-settings .setting {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 432px) {
+
+    body {
+        justify-content: center;
+        align-items: center;
+    }
+
+    #main {
+        gap: 1.5rem;
+    }
+
+    .settings-container,
+    .sketch-container {
+        height: 275px;
+        width: 275px;
+    }
+
+    .btn-settings,
+    .input-settings {
+        flex-wrap: wrap;
+    }
 }
